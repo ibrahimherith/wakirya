@@ -35,5 +35,5 @@ The login credentials are:
 Admin: admin@example.com
 password: 123456
 
-User: user@example.com
-password: user1234
+User: ibrah@gmail.com
+password: ibrah1234
