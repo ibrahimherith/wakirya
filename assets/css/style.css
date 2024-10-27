@@ -1,0 +1,9 @@
+.mainPosBg {
+  background-image: url("../images/pos-bg.png");
+  background-size: cover;
+}
+
+.logo {
+  width: 250px;
+  height: 250px;
+}
