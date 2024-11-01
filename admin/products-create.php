@@ -14,14 +14,11 @@
             <form action="code.php" method="POST" enctype="multipart/form-data">
 
                 <div class="row">
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-12 mb-3">
                         <label for="">Jina *</label>
                         <input type="text" name="name" required class="form-control" />
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="">Batch Na. *</label>
-                        <input type="text" name="batch" required class="form-control">
-                    </div>
+
                     <div class="col-md-6 mb-3">
                         <label for="">Idadi *</label>
                         <input type="text" name="quantity" required class="form-control" />
@@ -39,7 +36,39 @@
                         <input type="text" name="sell_price" required class="form-control" />
                     </div>
 
-                    <div class="col-md-12 mb-3 text-end">
+                    <div class="col-md-6 mb-3">
+                        <label for="expense-1">Makato ya matumizi</label>
+                        <select class="form-control" name="expense-1" id="expense-1">
+                            <option value="">-- Chagua --</option>
+                            <option value="mkopo">Mkopo</option>
+                            <option value="mshahara">Mshahara</option>
+                            <option value="mengineyo">Mengineyo</option>
+                        </select>
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label for="">Makato (%)</label>
+                        <input type="number" name="percent-1" min="0" max="100" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="expense-2">Makato ya matumizi (2)</label>
+                        <select class="form-control" name="expense-2" id="expense-2">
+                            <option value="">-- Chagua --</option>
+                            <option value="mkopo">Mkopo</option>
+                            <option value="mshahara">Mshahara</option>
+                            <option value="mengineyo">Mengineyo</option>
+                        </select>
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label for="">Makato (%)</label>
+                        <input type="number" name="percent-2" min="0" max="100" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 mb-3 ">
                         <br />
                         <button type="submit" name="saveProduct" class="btn btn-primary">Save</button>
                     </div>

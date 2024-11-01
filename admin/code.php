@@ -97,13 +97,17 @@ if (isset($_POST['updateAdmin'])) {
  */
 if (isset($_POST['saveProduct'])) {
     $name = validate($_POST['name']);
-    $batch = validate($_POST['batch']);
+    $batch = "BN-" . rand(1111, 9999);
     $quantity = validate($_POST['quantity']);
     $measure = validate($_POST['measure']);
     $buy_price = validate($_POST['buy_price']);
     $sell_price = validate($_POST['sell_price']);
+    $expenseOne = validate($_POST['expense-1']);
+    $expenseTwo = validate($_POST['expense-2']);
+    $percentOne = validate($_POST['percent-1']);
+    $percentTwo = validate($_POST['percent-2']);
 
-    $status = isset($_POST['status']) == true ? 1 : 0;
+    // $expense_price = $sell_price * ($expensesPercent / 100);
 
     $data = [
         'name' => $name,
@@ -112,7 +116,10 @@ if (isset($_POST['saveProduct'])) {
         'measure' => $measure,
         'buy_price' => $buy_price,
         'sell_price' => $sell_price,
-        'status' => $status
+        'expense_1' => $expenseOne,
+        'expense_2' => $expenseTwo,
+        'percent_1' => $percentOne,
+        'percent_2' => $percentTwo,
     ];
 
     $result = insert('products', $data);
@@ -138,8 +145,11 @@ if (isset($_POST['updateProduct'])) {
     $measure = validate($_POST['measure']);
     $buy_price = validate($_POST['buy_price']);
     $sell_price = validate($_POST['sell_price']);
+    $expenseOne = validate($_POST['expense-1']);
+    $expenseTwo = validate($_POST['expense-2']);
+    $percentOne = validate($_POST['percent-1']);
+    $percentTwo = validate($_POST['percent-2']);
 
-    $status = isset($_POST['status']) == true ? 1 : 0;
 
     $data = [
         'name' => $name,
@@ -148,7 +158,10 @@ if (isset($_POST['updateProduct'])) {
         'measure' => $measure,
         'buy_price' => $buy_price,
         'sell_price' => $sell_price,
-        'status' => $status
+        'expense_1' => $expenseOne,
+        'expense_2' => $expenseTwo,
+        'percent_1' => $percentOne,
+        'percent_2' => $percentTwo,
     ];
 
     $result = update('products', $product_id, $data);
