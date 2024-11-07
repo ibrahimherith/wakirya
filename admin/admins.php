@@ -14,56 +14,54 @@
             $admins = getAll('admins');
             if (!$admins) {
                 echo '<h4>Something Went Wrong!</h4>';
-                return false;
+                exit;
             }
 
             if (mysqli_num_rows($admins) > 0) {
-
             ?>
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered">
-                        <thead>
+                <table id="datatablesSimple" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Na.</th>
+                            <th>Jina</th>
+                            <th>Anuani</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $i = 1;
+                        foreach ($admins as $admin) :
+                        ?>
                             <tr>
-                                <th>Na.</th>
-                                <th>Jina</th>
-                                <th>Anuani</th>
-                                <th>Role</th>
-                                <th>Status</th>
+                                <td><?= $i++; ?></td>
+                                <td><?= $admin['name'] ?></td>
+                                <td><?= $admin['email'] ?></td>
+                                <td><?= $admin['role'] ?></td>
+                                <td>
+                                    <?php
+                                    if ($admin['is_ban'] == 1) {
+                                        echo '<span class="badge bg-danger">Banned</span>';
+                                    } else {
+                                        echo '<span class="badge bg-primary">Active</span>';
+                                    }
+                                    ?>
+                                </td>
+                                <td>
+                                    <a href="admins-edit.php?id=<?= $admin['id']; ?>" class="btn btn-success btn-sm">Edit</a>
+                                    <a href="admins-delete.php?id=<?= $admin['id']; ?>"
+                                        class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Are you sure you want to delete this employee?');">Delete</a>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i = 1;
-                            foreach ($admins as $adminItem) :
-                            ?>
-                                <tr>
-                                    <td><?= $i++; ?></td>
-                                    <td><?= $adminItem['name'] ?></td>
-                                    <td><?= $adminItem['email'] ?></td>
-                                    <td><?= $adminItem['role'] ?></td>
-                                    <td>
-                                        <?php
-                                        if ($adminItem['is_ban'] == 1) {
-                                            echo '<span class="badge bg-danger">Banned</span>';
-                                        } else {
-                                            echo '<span class="badge bg-primary">Active</span>';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td>
-                                        <a href="admins-edit.php?id=<?= $adminItem['id']; ?>" class="btn btn-success btn-sm">Edit</a>
-                                        <a href="admins-delete.php?id=<?= $adminItem['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             <?php
             } else {
-            ?>
-                <h4 class="mb-0">No Record found</h4>
-            <?php
+                echo '<h4 class="mb-0">No Record found</h4>';
             }
             ?>
         </div>

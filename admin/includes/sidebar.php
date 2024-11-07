@@ -54,6 +54,27 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
                     Angalia Oda
                 </a>
 
+                <div class="w-75 mx-auto">
+                    <hr>
+                </div>
+                <div class="sb-sidenav-menu-heading">RIPOTI</div>
+                <!-- Reports -->
+                <a class="nav-link <?= $page == 'report-week.php' ? 'active' : ''; ?>"
+                    href="report-week.php">
+                    <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
+                    Wiki
+                </a>
+                <a class="nav-link <?= $page == 'report-month.php' ? 'active' : ''; ?>"
+                    href="report-month.php">
+                    <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
+                    Mwezi
+                </a>
+                <a class="nav-link <?= $page == 'reports.php' ? 'active' : ''; ?>"
+                    href="reports.php">
+                    <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
+                    Mwaka
+                </a>
+
 
                 <!-- PRODUCTS -->
                 <div class="sb-sidenav-menu-heading">STOCK</div>

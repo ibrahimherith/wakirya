@@ -14,11 +14,7 @@
         <div class="col-xl-4 mb-3 col-md-6">
             <div class="card card-img-holder bg-primary text-white align-items-center justify-content-center">
                 <div class="card-body">
-
-                    <p></p>
-                    <p></p>
-
-                    <h3 class="card-text mb-0 font-weight-bold text-gray-800">
+                    <h5 class="card-text mb-0 font-weight-bold text-gray-800">
                         <?php
                         $todayDate = date('Y-m-d');
 
@@ -31,9 +27,9 @@
                         $todayPreorders = mysqli_query($conn, "SELECT SUM(paid_amount) AS pre_amount, SUM(surplus_amount) AS pre_bonus 
                         FROM preorders WHERE order_date='$todayDate'");
 
-                        $totalLoanPayment = mysqli_query($conn, "SELECT SUM(loan_payment) AS payment_loan FROM orders");
-                        $totalSalaryPayment = mysqli_query($conn, "SELECT SUM(salary_payment) AS payment_salary FROM orders");
-                        $totalOtherPayment = mysqli_query($conn, "SELECT SUM(other_payment) AS payment_other FROM orders");
+                        $totalLoanPayment = mysqli_query($conn, "SELECT SUM(loan_payment) AS payment_loan FROM orders WHERE order_date='$todayDate'");
+                        $totalSalaryPayment = mysqli_query($conn, "SELECT SUM(salary_payment) AS payment_salary FROM orders WHERE order_date='$todayDate'");
+                        $totalOtherPayment = mysqli_query($conn, "SELECT SUM(other_payment) AS payment_other FROM orders WHERE order_date='$todayDate'");
 
                         // mkopo
                         if ($totalLoanPayment) {
@@ -70,13 +66,13 @@
                             // mkopo
                             $final_result = $final_result - ($payment_loan + $payment_salary + $payment_other);
 
-                            echo number_format($final_result) . " Tsh";
+                            echo number_format($final_result) . " <span class='small'>TSH</span>";
                         } else {
                             echo 'Something Went Wrong!';
                         }
                         ?>
 
-                    </h3>
+                    </h5>
                     <p class="card-title font-weight-bold text-white text-uppercase mb-1">
                         Siku
                     </p>
@@ -87,10 +83,7 @@
         <div class="col-xl-4 col-md-6">
             <div class="card bg-primary text-white align-items-center justify-content-center ">
                 <div class="card-body  ">
-                    <p></p>
-                    <p></p>
-
-                    <h3 class="card-text mb-0 font-weight-bold text-gray-800">
+                    <h5 class="card-text mb-0 font-weight-bold text-gray-800">
                         <?php
                         $todayDate = date('Y-m-d');
 
@@ -103,9 +96,9 @@
                         $weekPre = mysqli_query($conn, "SELECT SUM(paid_amount) AS pre_amount, SUM(surplus_amount) AS pre_bonus 
                             FROM preorders WHERE WEEK(order_date, 1) = WEEK('$todayDate', 1) AND YEAR(order_date) = YEAR('$todayDate')");
 
-                        $totalLoanPayment = mysqli_query($conn, "SELECT SUM(loan_payment) AS payment_loan FROM orders");
-                        $totalSalaryPayment = mysqli_query($conn, "SELECT SUM(salary_payment) AS payment_salary FROM orders");
-                        $totalOtherPayment = mysqli_query($conn, "SELECT SUM(other_payment) AS payment_other FROM orders");
+                        $totalLoanPayment = mysqli_query($conn, "SELECT SUM(loan_payment) AS payment_loan FROM orders WHERE WEEK(order_date, 1) = WEEK('$todayDate', 1) AND YEAR(order_date) = YEAR('$todayDate')");
+                        $totalSalaryPayment = mysqli_query($conn, "SELECT SUM(salary_payment) AS payment_salary FROM orders WHERE WEEK(order_date, 1) = WEEK('$todayDate', 1) AND YEAR(order_date) = YEAR('$todayDate')");
+                        $totalOtherPayment = mysqli_query($conn, "SELECT SUM(other_payment) AS payment_other FROM orders WHERE WEEK(order_date, 1) = WEEK('$todayDate', 1) AND YEAR(order_date) = YEAR('$todayDate')");
 
                         // mkopo
                         if ($totalLoanPayment) {
@@ -140,13 +133,13 @@
 
                             $final_result = $final_result - ($payment_loan + $payment_salary + $payment_other);
 
-                            echo number_format($final_result) . " Tsh";
+                            echo number_format($final_result) . " <span class='small'>TSH</span>";
                         } else {
                             echo 'Something Went Wrong!';
                         }
                         ?>
 
-                    </h3>
+                    </h5>
                     <p class="card-title font-weight-bold text-white text-uppercase mb-1">
                         Wiki
                     </p>
@@ -157,10 +150,7 @@
         <div class="col-xl-4 col-md-6">
             <div class="card bg-primary text-white align-items-center justify-content-center">
                 <div class="card-body  ">
-                    <p></p>
-                    <p></p>
-
-                    <h3 class="card-text mb-0 font-weight-bold text-gray-800">
+                    <h5 class="card-text mb-0 font-weight-bold text-gray-800">
                         <?php
                         $totalSales = mysqli_query($conn, "SELECT SUM(paid_amount) AS sales_amount, SUM(surplus_amount) AS bonus_amount 
                                                              FROM orders");
@@ -209,13 +199,13 @@
 
                             $final_result = $final_result - ($payment_loan + $payment_salary + $payment_other);
 
-                            echo number_format($final_result) . " Tsh";
+                            echo number_format($final_result) . " <span class='small'>TSH</span>";
                         } else {
                             echo 'Something Went Wrong!';
                         }
 
                         ?>
-                    </h3>
+                    </h5>
 
                     <p class="card-title font-weight-bold text-white text-uppercase mb-1">
                         Jumla
@@ -228,11 +218,9 @@
         <!-- he -->
         <div class="col-xl-4 col-md-6">
             <div class="card bg-primary text-white align-items-center justify-content-center">
-                <div class="card-body  ">
-                    <p></p>
-                    <p></p>
+                <div class="card-body">
 
-                    <h3 class="card-text mb-0 font-weight-bold text-gray-800">
+                    <h5 class="card-text mb-0 font-weight-bold text-gray-800">
                         <?php
                         $totalLoanPayment = mysqli_query($conn, "SELECT SUM(loan_payment) AS payment_amount FROM orders");
 
@@ -240,13 +228,13 @@
                             $loan_payment_result = mysqli_fetch_assoc($totalLoanPayment);
                             $payment_amount = $loan_payment_result['payment_amount'] !== null ? $loan_payment_result['payment_amount'] : 0;
 
-                            echo number_format($payment_amount) . " Tsh";
+                            echo number_format($payment_amount) . " <span class='small'>TSH</span>";
                         } else {
                             echo 'Something Went Wrong!';
                         }
 
                         ?>
-                    </h3>
+                    </h5>
 
                     <p class="card-title font-weight-bold text-white text-uppercase mb-1">
                         Malipo mkopo
@@ -260,10 +248,7 @@
         <div class="col-xl-4 col-md-6">
             <div class="card bg-primary text-white align-items-center justify-content-center">
                 <div class="card-body  ">
-                    <p></p>
-                    <p></p>
-
-                    <h3 class="card-text mb-0 font-weight-bold text-gray-800">
+                    <h5 class="card-text mb-0 font-weight-bold text-gray-800">
                         <?php
                         $totalLoanPayment = mysqli_query($conn, "SELECT SUM(salary_payment) AS payment_amount FROM orders");
 
@@ -271,13 +256,13 @@
                             $loan_payment_result = mysqli_fetch_assoc($totalLoanPayment);
                             $payment_amount = $loan_payment_result['payment_amount'] !== null ? $loan_payment_result['payment_amount'] : 0;
 
-                            echo number_format($payment_amount) . " Tsh";
+                            echo number_format($payment_amount) . " <span class='small'>TSH</span>";
                         } else {
                             echo 'Something Went Wrong!';
                         }
 
                         ?>
-                    </h3>
+                    </h5>
 
                     <p class="card-title  font-weight-bold text-white text-uppercase mb-1">
                         Malipo mshahara
@@ -291,10 +276,7 @@
         <div class="col-xl-4 col-md-6">
             <div class="card bg-primary text-white align-items-center justify-content-center">
                 <div class="card-body  ">
-                    <p></p>
-                    <p></p>
-
-                    <h3 class="card-text mb-0 font-weight-bold text-gray-800">
+                    <h5 class="card-text mb-0 font-weight-bold text-gray-800">
                         <?php
                         $totalLoanPayment = mysqli_query($conn, "SELECT SUM(other_payment) AS payment_amount FROM orders");
 
@@ -302,13 +284,13 @@
                             $loan_payment_result = mysqli_fetch_assoc($totalLoanPayment);
                             $payment_amount = $loan_payment_result['payment_amount'] !== null ? $loan_payment_result['payment_amount'] : 0;
 
-                            echo number_format($payment_amount) . " Tsh";
+                            echo number_format($payment_amount) . " <span class='small'>TSH</span>";
                         } else {
                             echo 'Something Went Wrong!';
                         }
 
                         ?>
-                    </h3>
+                    </h5>
 
                     <p class="card-title  font-weight-bold text-white text-uppercase mb-1">
                         Malipo mengineyo
@@ -329,10 +311,8 @@
         <div class="col-xl-4 col-md-6">
             <div class="card bg-success text-white align-items-center justify-content-center">
                 <div class="card-body ">
-                    <p></p>
-                    <p></p>
 
-                    <h3 class="card-text mb-0 font-weight-bold text-gray-800">
+                    <h5 class="card-text mb-0 font-weight-bold text-gray-800">
                         <?php
                         $todayDate = date('Y-m-d');
 
@@ -351,7 +331,7 @@
                         }
                         ?>
 
-                    </h3>
+                    </h5>
                     <p class="card-title font-weight-bold text-white text-uppercase mb-1">
                         Leo
                     </p>
@@ -363,10 +343,9 @@
             <div class="card bg-success text-white align-items-center justify-content-center ">
                 <!-- <img class="card-img" src="assets/img/circle.png" alt="circle"> -->
                 <div class="card-body ">
-                    <p></p>
-                    <p></p>
 
-                    <h3 class="card-text mb-0 font-weight-bold text-gray-800">
+
+                    <h5 class="card-text mb-0 font-weight-bold text-gray-800">
                         <?php
                         function getCountHapa($tableName)
                         {
@@ -387,7 +366,7 @@
                         echo $total;
                         ?>
 
-                    </h3>
+                    </h5>
 
                     <p class="card-title font-weight-bold text-white text-uppercase mb-1">
                         Jumla
@@ -407,12 +386,11 @@
             <div class="card bg-secondary text-white align-items-center justify-content-center">
                 <!-- <img class="card-img" src="assets/img/circle.png" alt="circle"> -->
                 <div class="card-body ">
-                    <p></p>
-                    <p></p>
 
-                    <h3 class="card-text mb-0 font-weight-bold text-gray-800">
+
+                    <h5 class="card-text mb-0 font-weight-bold text-gray-800">
                         <?= getCount('products'); ?>
-                    </h3>
+                    </h5>
                     <p class="card-title font-weight-bold text-white text-uppercase mb-1">
                         Bidhaa
                     </p>
@@ -423,12 +401,10 @@
             <div class="card bg-secondary text-white align-items-center justify-content-center">
                 <!-- <img class="card-img" src="assets/img/circle.png" alt="circle"> -->
                 <div class="card-body ">
-                    <p></p>
-                    <p></p>
 
-                    <h3 class="card-text mb-0 font-weight-bold text-gray-800">
+                    <h5 class="card-text mb-0 font-weight-bold text-gray-800">
                         <?= getCount('customers'); ?>
-                    </h3>
+                    </h5>
 
                     <p class="card-title font-weight-bold text-white text-uppercase mb-1">
                         Wateja
@@ -440,12 +416,11 @@
             <div class="card bg-secondary text-white align-items-center justify-content-center">
                 <!-- <img class="card-img" src="assets/img/circle.png" alt="circle"> -->
                 <div class="card-body ">
-                    <p></p>
-                    <p></p>
 
-                    <h3 class="card-text mb-0 font-weight-bold text-gray-800">
+
+                    <h5 class="card-text mb-0 font-weight-bold text-gray-800">
                         <?= getCount('admins'); ?>
-                    </h3>
+                    </h5>
 
                     <p class="card-title font-weight-bold text-white text-uppercase mb-1">
                         Wafanyakazi

@@ -3,22 +3,14 @@
 <div class="container-fluid px-4">
     <div class="card mt-4 shadow-sm">
         <div class="card-header">
-            <div class="row">
-                <div class="col-md-4">
-                    <h4 class="mb-0">Mauzo</h4>
-                </div>
-                <!-- Search Input -->
-                <div class="col-md-4 offset-md-4">
-                    <input type="text" id="orderSearch" class="form-control" placeholder="Tafuta mauzo...">
-                </div>
-            </div>
+            <h4 class="mb-0">Mauzo</h4>
         </div>
+
         <div class="card-body">
 
             <?php alertMessage(); ?>
 
             <?php
-            // Fetch all orders without pagination
             if (isset($_GET['date']) || isset($_GET['payment_status'])) {
 
                 $orderDate = validate($_GET['date']);
@@ -48,7 +40,7 @@
             if ($orders) {
                 if (mysqli_num_rows($orders) > 0) {
             ?>
-                    <table class="table table-striped table-bordered align-items-center justify-content-center" id="orderTable">
+                    <table id="datatablesSimple">
                         <thead>
                             <tr>
                                 <!-- <th>Track No.</th> -->
@@ -98,15 +90,3 @@
 </div>
 
 <?php include('includes/footer.php'); ?>
-
-<!-- Add jQuery to handle search functionality -->
-<script>
-    $(document).ready(function() {
-        $("#orderSearch").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#orderTable tbody tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-</script>
