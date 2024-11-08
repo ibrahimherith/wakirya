@@ -27,7 +27,7 @@
                     <?php alertMessage(); ?>
 
                     <div class="w-100 text-center">
-                        <img src="assets/images/wk.jpeg" alt="wakirya logo" width="150px" height="150px">
+                        <img src="assets/img/wk.jpeg" alt="wakirya logo" width="150px" height="150px">
                     </div>
                     <div class="px-5 pb-5">
                         <h4 class="text-dark mb-3">Sign in</h4>
