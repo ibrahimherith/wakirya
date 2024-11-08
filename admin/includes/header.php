@@ -14,23 +14,23 @@ require 'authentication.php';
     <title>Wakirya</title>
 
     <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="../assets/fonts/css2.css" rel="stylesheet" />
     <!-- end fonts -->
 
+    <!-- datatables -->
+    <link href="../assets/css/style.min.css" rel="stylesheet" />
+    <!-- end datatables -->
 
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="assets/datatables/datatables.min.css" rel="stylesheet" />
+    <!-- fontawesome -->
+    <script src="../assets/js/all.js" crossorigin="anonymous"></script>
+    <!-- end fontawesome -->
 
-    <link href="assets/css/styles.css" rel="stylesheet" />
+    <!-- select2 -->
+    <link href="../assets/css/select2.min.css" rel="stylesheet" />
+    <!-- end select2 -->
 
-    <!-- <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script> -->
-    <script src="assets/js/all.js" crossorigin="anonymous"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
-    <link href="assets/css/custom.css" rel="stylesheet" />
+    <link href="../assets/css/styles.css" rel="stylesheet" />
+    <link href="../assets/css/custom.css" rel="stylesheet" />
 
 </head>
 

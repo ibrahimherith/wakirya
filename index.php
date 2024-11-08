@@ -9,9 +9,7 @@
     <title>Wakirya</title>
 
     <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="assets/fonts/css2.css" rel="stylesheet" />
     <!-- end fonts -->
 
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
