@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2024 at 11:37 AM
+-- Generation Time: Nov 08, 2024 at 10:17 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,7 +43,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password`, `phone`, `role`, `is_ban`, `created_at`) VALUES
-(5, 'wakirya', 'admin@example.com', '$2y$10$eAF30FEqkFWw1WUsHZSOfubYw0m7y.Vhi6qMmFMAtqzT58498G5gW', '0712000555', 'admin', 0, '2024-09-02'),
+(5, 'Administrator', 'admin@example.com', '$2y$10$eAF30FEqkFWw1WUsHZSOfubYw0m7y.Vhi6qMmFMAtqzT58498G5gW', '0712000555', 'admin', 0, '2024-09-02'),
 (6, 'ibrah', 'ibrah@gmail.com', '$2y$10$9zbd8FHa0qicGdwmZTN54OBjVMYlMw4uuOnOy2enz.QxpyKeKiUjy', '0652700800', 'user', 0, '2024-09-02');
 
 -- --------------------------------------------------------
@@ -77,6 +77,9 @@ CREATE TABLE `loans` (
   `paid_amount` varchar(100) NOT NULL,
   `due_amount` varchar(100) NOT NULL,
   `surplus_amount` varchar(100) NOT NULL,
+  `loan_payment` int(100) NOT NULL,
+  `salary_payment` int(100) NOT NULL,
+  `other_payment` int(100) NOT NULL,
   `order_date` date NOT NULL,
   `order_status` varchar(100) NOT NULL,
   `comment` varchar(255) NOT NULL,
@@ -115,6 +118,9 @@ CREATE TABLE `orders` (
   `paid_amount` varchar(100) DEFAULT NULL,
   `due_amount` varchar(100) DEFAULT NULL,
   `surplus_amount` varchar(100) NOT NULL,
+  `loan_payment` varchar(100) NOT NULL,
+  `salary_payment` int(100) NOT NULL,
+  `other_payment` int(100) NOT NULL,
   `order_date` date NOT NULL,
   `order_status` varchar(100) DEFAULT NULL,
   `comment` varchar(255) DEFAULT NULL,
@@ -153,6 +159,9 @@ CREATE TABLE `preorders` (
   `paid_amount` varchar(100) NOT NULL,
   `due_amount` varchar(100) NOT NULL,
   `surplus_amount` varchar(100) NOT NULL,
+  `loan_payment` int(100) NOT NULL,
+  `salary_payment` int(100) NOT NULL,
+  `other_payment` int(100) NOT NULL,
   `order_date` date NOT NULL,
   `order_status` varchar(100) NOT NULL,
   `comment` varchar(255) DEFAULT NULL,
@@ -189,20 +198,12 @@ CREATE TABLE `products` (
   `measure` varchar(255) DEFAULT NULL,
   `buy_price` int(11) NOT NULL,
   `sell_price` int(11) NOT NULL,
-  `status` tinyint(1) DEFAULT 0 COMMENT '0 = visible, 1 = hidden',
+  `expense_1` varchar(255) NOT NULL,
+  `percent_1` int(100) NOT NULL,
+  `expense_2` varchar(255) NOT NULL,
+  `percent_2` int(100) NOT NULL,
   `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`id`, `name`, `batch`, `quantity`, `measure`, `buy_price`, `sell_price`, `status`, `created_at`) VALUES
-(9, 'Pespi', 'AC100', 23, 'creti', 15000, 22500, 0, '2024-09-21'),
-(10, 'cement', 'BD677G', 151, 'mifuko', 15000, 17500, 0, '2024-09-29'),
-(11, 'mbao', 'PBN1012', 39, '2x2', 2000, 3000, 0, '2024-09-29'),
-(12, 'Misumali', 'BD677G', 55, 'kilo', 3600, 4000, 0, '2024-09-29'),
-(13, 'Rangi', '100RG', 184, 'kopo', 15000, 19500, 0, '2024-09-29');
 
 --
 -- Indexes for dumped tables
@@ -276,7 +277,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `loans`
@@ -318,7 +319,7 @@ ALTER TABLE `preorder_items`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
