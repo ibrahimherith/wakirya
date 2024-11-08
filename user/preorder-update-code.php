@@ -36,6 +36,9 @@ if (isset($_POST['updateOrder'])) {
         $amount_paid = $orderData["paid_amount"];
         $amount_due = $orderData["due_amount"];
         $amount_surplus = $orderData["surplus_amount"];
+        $loan_amount = $orderData["loan_payment"];
+        $salary_amount = $orderData["salary_payment"];
+        $other_amount = $orderData["other_payment"];
         $order_date = $orderData["order_date"];
         $order_status = $orderData["order_status"];
         $order_placed_by_id = $orderData["order_placed_by_id"];
@@ -68,6 +71,9 @@ if (isset($_POST['updateOrder'])) {
                 'paid_amount' => $amount_paid,
                 'due_amount' => $amount_due,
                 'surplus_amount' => $amount_surplus,
+                'loan_payment' => $loan_amount,
+                'salary_payment' => $salary_amount,
+                'other_payment' => $other_amount,
                 'order_date' => $order_date,
                 'order_status' => $order_status,
                 'comment' => $comment,

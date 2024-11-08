@@ -246,7 +246,6 @@ if (isset($_POST['saveOrder'])) {
             'loan_payment' => $loanPayment,
             'salary_payment' => $salaryPayment,
             'other_payment' => $otherPayment,
-            'surplus_amount' => $amount_surplus,
             'order_date' => date('Y-m-d'),
             'order_status' => $order_status,
             'comment' => $comment,

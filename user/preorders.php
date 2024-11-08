@@ -47,7 +47,7 @@
             if ($orders) {
                 if (mysqli_num_rows($orders) > 0) {
             ?>
-                    <table class="table table-striped table-bordered align-items-center justify-content-center" id="preorderTable">
+                    <table id="datatablesSimple">
                         <thead>
                             <tr>
                                 <!-- <th>Track No.</th> -->
@@ -100,15 +100,3 @@
 </div>
 
 <?php include('includes/footer.php'); ?>
-
-<!-- Add jQuery to handle search functionality -->
-<script>
-    $(document).ready(function() {
-        $("#preorderSearch").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#preorderTable tbody tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-</script>

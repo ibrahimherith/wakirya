@@ -40,7 +40,6 @@ if (!isset($_SESSION['productItems'])) {
                         <?php
                         if (isset($_SESSION['cname'])) {
                             $name = validate($_SESSION['cname']);
-                            // $phone = validate($_SESSION['cphone']);
                             $invoiceNo = validate($_SESSION['invoice_no']);
 
                             $customerQuery = mysqli_query($conn, "SELECT * FROM customers WHERE name='$name' LIMIT 1");

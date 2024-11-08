@@ -20,7 +20,8 @@ require 'authentication.php';
     <!-- end fonts -->
 
 
-    <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="assets/datatables/datatables.min.css" rel="stylesheet" />
 
     <link href="assets/css/styles.css" rel="stylesheet" />
 

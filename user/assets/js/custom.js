@@ -171,18 +171,18 @@ $(document).ready(function () {
 
   // SAVE ORDER
   $(document).on("click", "#saveOrder", function () {
-    saveOrder("orders-code.php");
+    saveOrder("orders-code.php", "orders.php");
   });
 
   $(document).on("click", "#saveLoan", function () {
-    saveOrder("loans-code.php");
+    saveOrder("loans-code.php", "loans.php");
   });
 
   $(document).on("click", "#savePreorder", function () {
-    saveOrder("preorders-code.php");
+    saveOrder("preorders-code.php", "preorders.php");
   });
 
-  function saveOrder(url) {
+  function saveOrder(url, redirectUrl) {
     $.ajax({
       type: "POST",
       url: url,
@@ -193,11 +193,11 @@ $(document).ready(function () {
         var res = JSON.parse(response);
 
         if (res.status == 200) {
-          // swal(res.message, res.message, res.status_type);
-          $("#orderPlaceSuccessMessage").text(res.message);
-          $("#orderSuccessModal").modal("show");
+          swal(res.message, "", res.status_type).then(() => {
+            window.location.href = redirectUrl;
+          });
         } else {
-          swal(res.message, res.message, res.status_type);
+          swal(res.message, "", res.status_type);
         }
       },
     });

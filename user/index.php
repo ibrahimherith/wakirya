@@ -10,14 +10,12 @@
             <hr>
             <h5>Mauzo</h5>
         </div>
+
         <div class="col-xl-4 col-md-6">
             <div class="card card-img-holder bg-primary text-white align-items-center justify-content-center">
                 <div class="card-body">
 
-                    <p></p>
-                    <p></p>
-
-                    <h3 class="card-text mb-0 font-weight-bold text-gray-800">
+                    <h5 class="card-text mb-0 font-weight-bold text-gray-800">
                         <?php
                         $todayDate = date('Y-m-d');
 
@@ -45,13 +43,13 @@
 
                             $final_result = $sales_amount + $bonus_amount + $loans_amount + $loan_bonus + $pre_amount + $pre_bonus;
 
-                            echo number_format($final_result) . "/=";
+                            echo number_format($final_result) . " <span class='small'>TSH</span>";
                         } else {
                             echo 'Something Went Wrong!';
                         }
                         ?>
 
-                    </h3>
+                    </h5>
                     <p class="card-title font-weight-bold text-white text-uppercase mb-1">
                         Siku
                     </p>
@@ -62,10 +60,7 @@
         <div class="col-xl-4 col-md-6">
             <div class="card bg-primary text-white align-items-center justify-content-center ">
                 <div class="card-body  ">
-                    <p></p>
-                    <p></p>
-
-                    <h3 class="card-text mb-0 font-weight-bold text-gray-800">
+                    <h5 class="card-text mb-0 font-weight-bold text-gray-800">
                         <?php
                         $todayDate = date('Y-m-d');
 
@@ -93,12 +88,12 @@
 
                             $final_result = $sales_amount + $bonus_amount + $loans_amount + $loan_bonus + $pre_amount + $pre_bonus;
 
-                            echo number_format($final_result) . "/=";
+                            echo number_format($final_result) . " <span class='small'>TSH</span>";
                         } else {
                             echo 'Something Went Wrong!';
                         }
                         ?>
-                    </h3>
+                    </h5>
                     <p class="card-title font-weight-bold text-white text-uppercase mb-1">
                         Wiki
                     </p>

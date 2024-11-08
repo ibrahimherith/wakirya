@@ -7,10 +7,6 @@
                 <div class="col-md-4">
                     <h4 class="mb-0">Mikopo</h4>
                 </div>
-                <!-- Search Input -->
-                <div class="col-md-4 offset-md-4">
-                    <input type="text" id="loanSearch" class="form-control" placeholder="Tafuta mikopo...">
-                </div>
             </div>
         </div>
         <div class="card-body">
@@ -47,7 +43,7 @@
             if ($orders) {
                 if (mysqli_num_rows($orders) > 0) {
             ?>
-                    <table class="table table-striped table-bordered align-items-center justify-content-center" id="loanTable">
+                    <table id="datatablesSimple">
                         <thead>
                             <tr>
                                 <!-- <th>Track No.</th> -->
@@ -98,15 +94,3 @@
 </div>
 
 <?php include('includes/footer.php'); ?>
-
-<!-- Add jQuery to handle search functionality -->
-<script>
-    $(document).ready(function() {
-        $("#loanSearch").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#loanTable tbody tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-</script>
