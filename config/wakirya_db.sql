@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2024 at 10:17 AM
+-- Generation Time: Nov 10, 2024 at 05:44 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -61,6 +61,19 @@ CREATE TABLE `customers` (
   `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `name`, `email`, `phone`, `status`, `created_at`) VALUES
+(1, 'curtis', NULL, '0652999888', 0, '2024-11-09'),
+(2, 'zuma', NULL, '0652000000', 0, '2024-11-09'),
+(3, 'ibrah mteja', NULL, '', 0, '2024-11-09'),
+(4, 'mteja', NULL, '0652000000', 0, '2024-11-10'),
+(5, 'tariq', NULL, '', 0, '2024-11-10'),
+(6, 'mteja mpya', NULL, '', 0, '2024-11-10'),
+(7, 'mteja mpya', NULL, '', 0, '2024-11-10');
+
 -- --------------------------------------------------------
 
 --
@@ -80,6 +93,9 @@ CREATE TABLE `loans` (
   `loan_payment` int(100) NOT NULL,
   `salary_payment` int(100) NOT NULL,
   `other_payment` int(100) NOT NULL,
+  `amount1` int(255) NOT NULL,
+  `amount2` int(255) NOT NULL,
+  `amount3` int(100) NOT NULL,
   `order_date` date NOT NULL,
   `order_status` varchar(100) NOT NULL,
   `comment` varchar(255) NOT NULL,
@@ -155,13 +171,16 @@ CREATE TABLE `preorders` (
   `tracking_no` varchar(100) NOT NULL,
   `invoice_no` varchar(100) NOT NULL,
   `destination` varchar(100) NOT NULL,
-  `total_amount` varchar(100) NOT NULL,
-  `paid_amount` varchar(100) NOT NULL,
-  `due_amount` varchar(100) NOT NULL,
-  `surplus_amount` varchar(100) NOT NULL,
+  `total_amount` int(100) NOT NULL,
+  `paid_amount` int(100) NOT NULL,
+  `due_amount` int(100) NOT NULL,
+  `surplus_amount` int(100) NOT NULL,
   `loan_payment` int(100) NOT NULL,
   `salary_payment` int(100) NOT NULL,
   `other_payment` int(100) NOT NULL,
+  `amount1` int(100) NOT NULL,
+  `amount2` int(100) NOT NULL,
+  `amount3` int(100) NOT NULL,
   `order_date` date NOT NULL,
   `order_status` varchar(100) NOT NULL,
   `comment` varchar(255) DEFAULT NULL,
@@ -202,8 +221,18 @@ CREATE TABLE `products` (
   `percent_1` int(100) NOT NULL,
   `expense_2` varchar(255) NOT NULL,
   `percent_2` int(100) NOT NULL,
+  `expense_3` varchar(255) NOT NULL,
+  `percent_3` int(100) NOT NULL,
   `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `batch`, `quantity`, `measure`, `buy_price`, `sell_price`, `expense_1`, `percent_1`, `expense_2`, `percent_2`, `expense_3`, `percent_3`, `created_at`) VALUES
+(1, 'cement', 'BN-7490', 49, 'mifuko', 15000, 20000, 'mkopo', 10, '', 0, '', 0, '2024-11-08'),
+(2, 'Mbao', 'BN-4955', 97, '3 x 3', 3500, 4000, '', 0, '', 0, '', 0, '2024-11-10');
 
 --
 -- Indexes for dumped tables
@@ -277,7 +306,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `loans`
@@ -319,7 +348,7 @@ ALTER TABLE `preorder_items`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
