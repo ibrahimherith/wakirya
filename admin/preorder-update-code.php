@@ -39,6 +39,9 @@ if (isset($_POST['updateOrder'])) {
         $loan_amount = $orderData["loan_payment"];
         $salary_amount = $orderData["salary_payment"];
         $other_amount = $orderData["other_payment"];
+        $amount1 = $orderData["amount1"];
+        $amount2 = $orderData["amount2"];
+        $amount3 = $orderData["amount3"];
         $order_date = $orderData["order_date"];
         $order_status = $orderData["order_status"];
         $order_placed_by_id = $orderData["order_placed_by_id"];
@@ -54,9 +57,11 @@ if (isset($_POST['updateOrder'])) {
 
         // 
         $amount_paid = $amount_paid + $amount_paid_new;
-
-        // Calculate the new amount due
         $amount_due = $amount_total - $amount_paid;
+
+        $loanPayment = ($amount_paid * $amount1) / $amount_total;
+        $salaryPayment = ($amount_paid * $amount2) / $amount_total;
+        $otherPayment = ($amount_paid * $amount3) / $amount_total;
 
         // Update order status based on payment
         if ($amount_total == $amount_paid) {
@@ -111,6 +116,9 @@ if (isset($_POST['updateOrder'])) {
             $data = [
                 'paid_amount' => $amount_paid,
                 'due_amount' => $amount_due,
+                'loan_payment' => $loanPayment,
+                'salary_payment' => $salaryPayment,
+                'other_payment' => $otherPayment,
                 'order_status' => $order_status,
                 'comment' => $comment
             ];

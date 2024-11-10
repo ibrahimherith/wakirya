@@ -52,7 +52,7 @@ if (!isset($_SESSION['productItems'])) {
                                         <tbody>
                                             <tr>
                                                 <td style="text-align: center;" colspan="2">
-                                                    <img src="assets/img/wk.jpeg" alt="" width="150px" height="150px">
+                                                    <img src="../assets/img/wk.jpeg" alt="" width="150px" height="150px">
 
                                                 </td>
                                             </tr>

@@ -104,8 +104,10 @@ if (isset($_POST['saveProduct'])) {
     $sell_price = validate($_POST['sell_price']);
     $expenseOne = validate($_POST['expense-1']);
     $expenseTwo = validate($_POST['expense-2']);
+    $expenseThree = validate($_POST['expense-3']);
     $percentOne = validate($_POST['percent-1']);
     $percentTwo = validate($_POST['percent-2']);
+    $percentThree = validate($_POST['percent-3']);
 
     // $expense_price = $sell_price * ($expensesPercent / 100);
 
@@ -118,8 +120,10 @@ if (isset($_POST['saveProduct'])) {
         'sell_price' => $sell_price,
         'expense_1' => $expenseOne,
         'expense_2' => $expenseTwo,
+        'expense_3' => $expenseThree,
         'percent_1' => $percentOne,
         'percent_2' => $percentTwo,
+        'percent_3' => $percentThree,
     ];
 
     $result = insert('products', $data);
@@ -147,8 +151,10 @@ if (isset($_POST['updateProduct'])) {
     $sell_price = validate($_POST['sell_price']);
     $expenseOne = validate($_POST['expense-1']);
     $expenseTwo = validate($_POST['expense-2']);
+    $expenseThree = validate($_POST['expense-3']);
     $percentOne = validate($_POST['percent-1']);
     $percentTwo = validate($_POST['percent-2']);
+    $percentThree = validate($_POST['percent-3']);
 
 
     $data = [
@@ -160,8 +166,10 @@ if (isset($_POST['updateProduct'])) {
         'sell_price' => $sell_price,
         'expense_1' => $expenseOne,
         'expense_2' => $expenseTwo,
+        'expense_3' => $expenseThree,
         'percent_1' => $percentOne,
         'percent_2' => $percentTwo,
+        'percent_3' => $percentThree,
     ];
 
     $result = update('products', $product_id, $data);

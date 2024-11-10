@@ -41,8 +41,6 @@
                         <select class="form-control" name="expense-1" id="expense-1">
                             <option value="">-- Chagua --</option>
                             <option value="mkopo">Mkopo</option>
-                            <option value="mshahara">Mshahara</option>
-                            <option value="mengineyo">Mengineyo</option>
                         </select>
                     </div>
 
@@ -56,9 +54,7 @@
                         <label for="expense-2">Makato ya matumizi (2)</label>
                         <select class="form-control" name="expense-2" id="expense-2">
                             <option value="">-- Chagua --</option>
-                            <option value="mkopo">Mkopo</option>
                             <option value="mshahara">Mshahara</option>
-                            <option value="mengineyo">Mengineyo</option>
                         </select>
                     </div>
 
@@ -66,6 +62,20 @@
                     <div class="col-md-6 mb-3">
                         <label for="">Makato (%)</label>
                         <input type="number" name="percent-2" min="0" max="100" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="expense-3">Makato ya matumizi (3)</label>
+                        <select class="form-control" name="expense-3" id="expense-3">
+                            <option value="">-- Chagua --</option>
+                            <option value="mengineyo">Mengineyo</option>
+                        </select>
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label for="">Makato (%)</label>
+                        <input type="number" name="percent-3" min="0" max="100" class="form-control" />
                     </div>
 
                     <div class="col-md-12 mb-3 ">

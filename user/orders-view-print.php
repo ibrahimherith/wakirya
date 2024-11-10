@@ -42,7 +42,7 @@
                                 <tbody style="display: flex; flex-direction:column; justify-items:center; align-items: center;">
                                     <tr>
                                         <td style="text-align: center;" colspan="2">
-                                            <img src="assets/img/wk.jpeg" alt="" width="150px" height="150px">
+                                            <img src="../assets/img/wk.jpeg" alt="" width="150px" height="150px">
                                             <h5 style="font-size: 20px; line-height: 20px; margin:2px; padding: 0;">Risiti</h5>
                                         </td>
                                     </tr>

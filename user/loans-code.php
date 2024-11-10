@@ -32,8 +32,10 @@ if (isset($_POST['addItem'])) {
                 'sell_price' => $row['sell_price'],
                 'expense_1' => $row['expense_1'],
                 'expense_2' => $row['expense_2'],
+                'expense_3' => $row['expense_3'],
                 'percent_1' => $row['percent_1'],
                 'percent_2' => $row['percent_2'],
+                'percent_3' => $row['percent_3'],
             ];
 
             if (!in_array($row['id'], $_SESSION['productItemIds'])) {
@@ -56,8 +58,10 @@ if (isset($_POST['addItem'])) {
                             'sell_price' => $row['sell_price'],
                             'expense_1' => $row['expense_1'],
                             'expense_2' => $row['expense_2'],
+                            'expense_3' => $row['expense_3'],
                             'percent_1' => $row['percent_1'],
                             'percent_2' => $row['percent_2'],
+                            'percent_3' => $row['percent_3'],
                         ];
                         $_SESSION['productItems'][$key] = $productData;
                     }
@@ -175,21 +179,23 @@ if (isset($_POST['saveOrder'])) {
 
         $amount1 = 0;
         $amount2 = 0;
-        $totalExpenseAmount = 0;
+        $amount3 = 0;
+
 
         foreach ($sessionProducts as $amtItem) {
             $productQuantity = $amtItem['quantity'];
             $productAmount = $amtItem['sell_price'];
             $expense1 = $amtItem['expense_1'];
             $expense2 = $amtItem['expense_2'];
+            $expense3 = $amtItem['expense_3'];
 
             $expenseAmount1 = $productAmount * ($amtItem['percent_1'] / 100) * $productQuantity;
             $expenseAmount2 = $productAmount * ($amtItem['percent_2'] / 100) * $productQuantity;
+            $expenseAmount3 = $productAmount * ($amtItem['percent_3'] / 100) * $productQuantity;
 
             $amount1 += $expenseAmount1;
             $amount2 += $expenseAmount2;
-
-            $totalExpenseAmount += ($amount1 + $amount2);
+            $amount3 += $expenseAmount3;
 
             $totalAmount += $productAmount * $productQuantity;
         }
@@ -210,29 +216,13 @@ if (isset($_POST['saveOrder'])) {
         }
 
         // malipo ya matumizi (mkopo, mshahara, mengineyo)
-        $loanPayment = 0;
-        $salaryPayment = 0;
-        $otherPayment = 0;
+        $x = ($amount_paid * $amount1) / $totalAmount;
+        $y = ($amount_paid * $amount2) / $totalAmount;
+        $z = ($amount_paid * $amount3) / $totalAmount;
 
-        if ($expense1 == 'mkopo') {
-            $loanPayment = $amount1;
-        } elseif ($expense1 == 'mshahara') {
-            $salaryPayment = $amount1;
-        } elseif ($expense1 == 'mengineyo') {
-            $otherPayment = $amount1;
-        } else {
-        }
-
-        //
-        if ($expense2 == 'mkopo') {
-            $loanPayment = $amount2;
-        } elseif ($expense2 == 'mshahara') {
-            $salaryPayment = $amount2;
-        } elseif ($expense2 == 'mengineyo') {
-            $otherPayment = $amount2;
-        } else {
-        }
-        // end
+        $loanPayment = $x;
+        $salaryPayment = $y;
+        $otherPayment = $z;
 
         $data = [
             'customer_id' => $customerData['id'],
@@ -246,6 +236,9 @@ if (isset($_POST['saveOrder'])) {
             'loan_payment' => $loanPayment,
             'salary_payment' => $salaryPayment,
             'other_payment' => $otherPayment,
+            'amount1' => $amount1,
+            'amount2' => $amount2,
+            'amount3' => $amount3,
             'order_date' => date('Y-m-d'),
             'order_status' => $order_status,
             'comment' => $comment,
