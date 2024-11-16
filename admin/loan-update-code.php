@@ -28,6 +28,9 @@ if (isset($_POST['updateOrder'])) {
         //get loan order data
         $orderData = $orders->fetch_assoc();
 
+        // get loan items data
+        $orderItems = $items->fetch_all(MYSQLI_ASSOC);
+
         $customer_id = $orderData["customer_id"];
         $tracking_no = $orderData["tracking_no"];
         $invoice_no = $orderData["invoice_no"];
@@ -45,14 +48,6 @@ if (isset($_POST['updateOrder'])) {
         $order_status = $orderData["order_status"];
         $order_placed_by_id = $orderData["order_placed_by_id"];
 
-        // get loan items data
-        $orderItems = $items->fetch_assoc();
-
-        $item_id = $orderItems['id'];
-        $order_id = $orderItems['order_id'];
-        $product_id = $orderItems['product_id'];
-        $price = $orderItems['price'];
-        $quantity = $orderItems['quantity'];
 
         // Unyama
         $amount_paid = $amount_paid + $amount_paid_new;
@@ -89,19 +84,29 @@ if (isset($_POST['updateOrder'])) {
             // getting new order id from orders table after inserting
             $new_order_id = mysqli_insert_id($conn);
 
-            // Inserting order items
-            $data_items = [
-                'order_id' => $new_order_id,
-                'product_id' => $product_id,
-                'price' => $price,
-                'quantity' => $quantity,
-            ];
+            foreach ($orderItems as $item) {
+                $item_id = $item['id'];
+                $order_id = $item['order_id'];
+                $product_id = $item['product_id'];
+                $price = $item['price'];
+                $quantity = $item['quantity'];
 
-            $result_items = insert('order_items', $data_items);
+                // Inserting order items
+                $data_items = [
+                    'order_id' => $new_order_id,
+                    'product_id' => $product_id,
+                    'price' => $price,
+                    'quantity' => $quantity,
+                ];
+
+                $result_items = insert('order_items', $data_items);
+
+                delete('loan_items', $item_id);
+            }
+
 
             //delete from loans
             delete("loans", $orderId);
-            delete("loan_items", $item_id);
 
             // Check the result of the update function
             if ($result) {

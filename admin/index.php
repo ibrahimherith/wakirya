@@ -2,7 +2,6 @@
 
 <div class="container-fluid px-4">
 
-    <h3 class="mt-4">Dashboard</h3>
     <?php alertMessage(); ?>
 
     <div class="row mb-3">
@@ -546,7 +545,7 @@
     </div>
 
     <!-- Others -->
-    <div class="row mb-3">
+    <div class="row">
         <div class="col-md-12 mb-0">
             <hr>
         </div>

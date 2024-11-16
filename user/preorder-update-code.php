@@ -29,6 +29,9 @@ if (isset($_POST['updateOrder'])) {
     if ($orders->num_rows > 0) {
         $orderData = $orders->fetch_assoc();
 
+        // get preorder items data
+        $orderItems = $items->fetch_all(MYSQLI_ASSOC);
+
         $customer_id = $orderData["customer_id"];
         $tracking_no = $orderData["tracking_no"];
         $invoice_no = $orderData["invoice_no"];
@@ -46,14 +49,6 @@ if (isset($_POST['updateOrder'])) {
         $order_status = $orderData["order_status"];
         $order_placed_by_id = $orderData["order_placed_by_id"];
 
-        // get loan items data
-        $orderItems = $items->fetch_assoc();
-
-        $item_id = $orderItems['id'];
-        $order_id = $orderItems['order_id'];
-        $product_id = $orderItems['product_id'];
-        $price = $orderItems['price'];
-        $quantity = $orderItems['quantity'];
 
         // 
         $amount_paid = $amount_paid + $amount_paid_new;
@@ -76,9 +71,9 @@ if (isset($_POST['updateOrder'])) {
                 'paid_amount' => $amount_paid,
                 'due_amount' => $amount_due,
                 'surplus_amount' => $amount_surplus,
-                'loan_payment' => $loan_amount,
-                'salary_payment' => $salary_amount,
-                'other_payment' => $other_amount,
+                'loan_payment' => $loanPayment,
+                'salary_payment' => $salaryPayment,
+                'other_payment' => $otherPayment,
                 'order_date' => $order_date,
                 'order_status' => $order_status,
                 'comment' => $comment,
@@ -90,19 +85,28 @@ if (isset($_POST['updateOrder'])) {
             // getting new order id from orders table after inserting
             $new_order_id = mysqli_insert_id($conn);
 
-            // Inserting order items
-            $data_items = [
-                'order_id' => $new_order_id,
-                'product_id' => $product_id,
-                'price' => $price,
-                'quantity' => $quantity,
-            ];
+            foreach ($orderItems as $item) {
+                $item_id = $item['id'];
+                $order_id = $item['order_id'];
+                $product_id = $item['product_id'];
+                $price = $item['price'];
+                $quantity = $item['quantity'];
 
-            $result_items = insert('order_items', $data_items);
+                // Inserting order items
+                $data_items = [
+                    'order_id' => $new_order_id,
+                    'product_id' => $product_id,
+                    'price' => $price,
+                    'quantity' => $quantity,
+                ];
+
+                $result_items = insert('order_items', $data_items);
+
+                delete("preorder_items", $item_id);
+            }
 
             //delete from loans
             delete("preorders", $orderId);
-            delete("preorder_items", $item_id);
 
             // Check the result of the update function
             if ($result) {
